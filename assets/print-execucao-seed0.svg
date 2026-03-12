@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360">
-  <rect width="1200" height="360" fill="#111827"/>
-  <text x="36" y="70" font-family="monospace" font-size="34" fill="#e5e7eb">Falha na decolagem!</text>
-  <text x="36" y="130" font-family="monospace" font-size="28" fill="#e5e7eb">Temperatura interna deve estar entre 18 e 27.</text>
-  <text x="36" y="185" font-family="monospace" font-size="28" fill="#e5e7eb">Temperatura externa deve estar entre -10 e 35.</text>
-  <text x="36" y="240" font-family="monospace" font-size="24" fill="#e5e7eb">Os módulos navigation system, attitude control, communication system,</text>
-  <text x="36" y="285" font-family="monospace" font-size="24" fill="#e5e7eb">power system, propulsion system não estão seguros.</text>
-  <text x="36" y="332" font-family="monospace" font-size="18" fill="#9ca3af">Saída de exemplo da célula final do notebook.</text>
-</svg>

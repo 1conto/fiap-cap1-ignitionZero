@@ -16,9 +16,7 @@ Ao executar a validação, o sistema compara os valores capturados com os limite
 ---
 
 ## 🖼️ Prints da execução
-Exemplo de saída gerada durante a execução da validação de telemetria:
-
-![Print da execução da validação de telemetria](assets/print-execucao-seed0.svg)
+Nesta seção você pode adicionar os prints reais da execução após rodar o código.
 
 ---
 
