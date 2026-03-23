@@ -1,0 +1,28 @@
+flowchart TD
+    A[Início] --> B[Definir lista de módulos críticos]
+    B --> C[Criar classe ModulosCriticos]
+    C --> D[Criar classe Telemetria]
+    D --> E[Instanciar Telemetria com módulos]
+    E --> F[Definir valores_seguros]
+    F --> G[Executar validacoes_telemetria]
+
+    G --> G1[Testar status de todos os módulos]
+    G1 --> G2[Capturar dados de telemetria\nTemp interna/externa\nIntegridade\nNível bateria\nPressão tanque]
+    G2 --> G3[Para cada regra em valores_seguros]
+
+    G3 --> H{Tipo da regra}
+    H -->|modulos| H1[Validar se todos módulos estão OK]
+    H -->|faixa min/max| H2[Validar limite numérico]
+    H -->|booleano| H3[Validar igualdade booleana]
+    H1 --> I[Salvar validações, auditoria e valores]
+    H2 --> I
+    H3 --> I
+
+    I --> J[Capturar infos de energia\nVoltagem, corrente,\ncapacidade, carga,\nenergia disponível e perda]
+    J --> K[Executar valida_decolagem]
+    K --> L{Todas validações são True?}
+    L -->|Sim| M[PRONTO PARA DECOLAR]
+    L -->|Não| N[DECOLAGEM ABORTADA]
+    M --> O[Retornar dict final com decisão e motivos]
+    N --> O
+    O --> P[Fim]

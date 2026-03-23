@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1750" viewBox="0 0 1400 1750" role="img" aria-labelledby="title desc">
+  <title id="title">Fluxograma da lógica de telemetria e decisão de decolagem</title>
+  <desc id="desc">Fluxo com etapas de captura, validação, auditoria e decisão de decolagem.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title { font: 700 30px Arial, sans-serif; fill: #0f172a; }
+      .box { fill: #e2e8f0; stroke: #334155; stroke-width: 2; rx: 12; }
+      .decision { fill: #fde68a; stroke: #334155; stroke-width: 2; }
+      .startend { fill: #bbf7d0; stroke: #166534; stroke-width: 2; }
+      .text { font: 18px Arial, sans-serif; fill: #0f172a; }
+      .small { font: 16px Arial, sans-serif; fill: #0f172a; }
+      .line { stroke: #334155; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <text x="700" y="48" text-anchor="middle" class="title">Fluxograma — Simulação de Pré-Decolagem</text>
+
+  <rect x="510" y="80" width="380" height="56" class="startend" rx="28"/>
+  <text x="700" y="115" text-anchor="middle" class="text">Início</text>
+
+  <rect x="430" y="170" width="540" height="70" class="box"/>
+  <text x="700" y="212" text-anchor="middle" class="text">Definir módulos críticos e instanciar Telemetria</text>
+
+  <rect x="450" y="275" width="500" height="70" class="box"/>
+  <text x="700" y="317" text-anchor="middle" class="text">Definir valores_seguros</text>
+
+  <rect x="380" y="380" width="640" height="90" class="box"/>
+  <text x="700" y="420" text-anchor="middle" class="text">Executar validacoes_telemetria()</text>
+  <text x="700" y="448" text-anchor="middle" class="small">(testa módulos + captura telemetria principal)</text>
+
+  <rect x="355" y="510" width="690" height="90" class="box"/>
+  <text x="700" y="550" text-anchor="middle" class="text">Para cada sensor/regra em valores_seguros:</text>
+  <text x="700" y="578" text-anchor="middle" class="small">classificar regra como módulos, faixa min/max ou booleano</text>
+
+  <polygon points="700,640 940,730 700,820 460,730" class="decision"/>
+  <text x="700" y="717" text-anchor="middle" class="text">Tipo da regra?</text>
+  <text x="700" y="742" text-anchor="middle" class="small">(módulos / faixa / booleano)</text>
+
+  <rect x="110" y="700" width="300" height="100" class="box"/>
+  <text x="260" y="744" text-anchor="middle" class="small">Validar se todos</text>
+  <text x="260" y="768" text-anchor="middle" class="small">módulos estão OK</text>
+
+  <rect x="550" y="860" width="300" height="100" class="box"/>
+  <text x="700" y="904" text-anchor="middle" class="small">Validar valor dentro</text>
+  <text x="700" y="928" text-anchor="middle" class="small">do intervalo min/max</text>
+
+  <rect x="990" y="700" width="300" height="100" class="box"/>
+  <text x="1140" y="744" text-anchor="middle" class="small">Validar igualdade</text>
+  <text x="1140" y="768" text-anchor="middle" class="small">booleana (True/False)</text>
+
+  <rect x="380" y="1010" width="640" height="90" class="box"/>
+  <text x="700" y="1050" text-anchor="middle" class="text">Salvar validações, auditoria e valores</text>
+  <text x="700" y="1078" text-anchor="middle" class="small">(inclui módulos com possíveis falhas)</text>
+
+  <rect x="330" y="1140" width="740" height="90" class="box"/>
+  <text x="700" y="1180" text-anchor="middle" class="text">Capturar informações de energia</text>
+  <text x="700" y="1208" text-anchor="middle" class="small">voltagem, corrente, capacidade, carga, energia e perda</text>
+
+  <rect x="470" y="1270" width="460" height="70" class="box"/>
+  <text x="700" y="1312" text-anchor="middle" class="text">Executar valida_decolagem()</text>
+
+  <polygon points="700,1375 920,1460 700,1545 480,1460" class="decision"/>
+  <text x="700" y="1450" text-anchor="middle" class="text">Todas validações são True?</text>
+
+  <rect x="180" y="1500" width="380" height="90" class="startend" rx="28"/>
+  <text x="370" y="1540" text-anchor="middle" class="text">PRONTO PARA DECOLAR</text>
+
+  <rect x="840" y="1500" width="380" height="90" class="startend" rx="28"/>
+  <text x="1030" y="1540" text-anchor="middle" class="text">DECOLAGEM ABORTADA</text>
+
+  <rect x="430" y="1630" width="540" height="64" class="startend" rx="28"/>
+  <text x="700" y="1668" text-anchor="middle" class="text">Retorna decisão final + motivos (auditoria)</text>
+
+  <path d="M700 136 L700 170" class="line"/>
+  <path d="M700 240 L700 275" class="line"/>
+  <path d="M700 345 L700 380" class="line"/>
+  <path d="M700 470 L700 510" class="line"/>
+  <path d="M700 600 L700 640" class="line"/>
+
+  <path d="M460 730 L410 730" class="line"/>
+  <text x="430" y="710" text-anchor="middle" class="small">módulos</text>
+
+  <path d="M700 820 L700 860" class="line"/>
+  <text x="740" y="846" class="small">faixa</text>
+
+  <path d="M940 730 L990 730" class="line"/>
+  <text x="965" y="710" text-anchor="middle" class="small">booleano</text>
+
+  <path d="M260 800 L260 1055 L380 1055" class="line"/>
+  <path d="M700 960 L700 1010" class="line"/>
+  <path d="M1140 800 L1140 1055 L1020 1055" class="line"/>
+
+  <path d="M700 1100 L700 1140" class="line"/>
+  <path d="M700 1230 L700 1270" class="line"/>
+  <path d="M700 1340 L700 1375" class="line"/>
+
+  <path d="M480 1460 L370 1500" class="line"/>
+  <text x="430" y="1470" text-anchor="middle" class="small">Sim</text>
+
+  <path d="M920 1460 L1030 1500" class="line"/>
+  <text x="970" y="1470" text-anchor="middle" class="small">Não</text>
+
+  <path d="M370 1590 L370 1662 L430 1662" class="line"/>
+  <path d="M1030 1590 L1030 1662 L970 1662" class="line"/>
+</svg>
