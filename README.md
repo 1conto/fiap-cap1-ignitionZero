@@ -48,7 +48,7 @@ flowchart TD
     O --> P[Fim]
 ```
 
-### Ordem de leitura na apresentação (sugestão)
+### Ordem de leitura
 1. **Coleta**: módulos e sensores geram dados simulados.
 2. **Validação**: cada dado é comparado com `valores_seguros`.
 3. **Auditoria**: o sistema registra regra, valor atual e motivo.
