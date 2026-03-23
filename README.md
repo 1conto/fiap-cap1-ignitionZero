@@ -16,7 +16,6 @@ Ao executar a validação, o sistema compara os valores capturados com os limite
 ---
 
 ## 🧭 Fluxograma da lógica do código
-Use o fluxograma abaixo na sua apresentação para explicar o fluxo principal do notebook `main.ipynb`.
 
 ```mermaid
 flowchart TD
