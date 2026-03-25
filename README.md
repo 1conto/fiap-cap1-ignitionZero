@@ -1,93 +1,77 @@
-# 🚀 FIAP CAP1 - Ignition Zero
+# FIAP CAP1 - Ignition Zero
 
-Simulação de um **relatório operacional de pré-decolagem** para missão espacial, desenvolvida em Python no notebook `main.ipynb`.
+## 📌 Explicação do projeto
+Este projeto simula um **relatório operacional de pré-decolagem** de uma missão espacial.
+A lógica principal está no notebook `main.ipynb`, onde são modelados:
 
----
+- **Módulos críticos da aeronave/foguete** (computador de voo, navegação, comunicação etc.);
+- **Sensores de telemetria** (temperatura interna/externa, pressão do tanque, nível de energia e integridade estrutural);
+- **Regras de segurança** (`valores_seguros`) para validar se a decolagem pode ser autorizada.
 
-## 📖 Visão geral
-O projeto representa um checklist de segurança antes da decolagem.
-A cada execução, valores de telemetria são simulados e comparados com regras de segurança para decidir se a missão está:
+Ao executar a validação, o sistema compara os valores capturados com os limites seguros e imprime:
 
-- ✅ **Pronta para decolar** (`Pronto para Decolar!`)
-- ❌ **Reprovada para decolagem** (`Falha na decolagem!`), com motivos de falha
-
----
-
-## 🎯 Objetivo acadêmico
-Aplicar fundamentos de lógica e Python em um cenário prático, com foco em:
-
-- modelagem de domínio;
-- validação de regras;
-- estruturação orientada a objetos;
-- geração de saída interpretável para apoio à decisão.
+- `Pronto para Decolar!` quando tudo está dentro da conformidade;
+- `Falha na decolagem!` com os motivos de reprovação quando algum item está fora do padrão.
 
 ---
 
-## 🧠 Técnicas utilizadas
+## 🧭 Fluxograma da lógica do código
 
-### 1) Simulação estocástica (aleatoriedade)
-A biblioteca `random` gera medições e estados dos módulos para representar variação real de operação.
+```mermaid
+flowchart TD
+    A[Início] --> B[Definir lista de módulos críticos]
+    B --> C[Criar classe ModulosCriticos]
+    C --> D[Criar classe Telemetria]
+    D --> E[Instanciar Telemetria com módulos]
+    E --> F[Definir valores_seguros]
+    F --> G[Executar validacoes_telemetria]
 
-### 2) Validação orientada a regras
-As regras de segurança ficam centralizadas no dicionário `valores_seguros`, com limites mínimos/máximos ou estado booleano esperado.
+    G --> G1[Testar status de todos os módulos]
+    G1 --> G2[Capturar dados de telemetria\nTemp interna/externa\nIntegridade\nNível bateria\nPressão tanque]
+    G2 --> G3[Para cada regra em valores_seguros]
 
-### 3) Auditoria operacional
-Além de validar, o sistema retorna justificativas de falha para cada item fora da conformidade, facilitando diagnóstico.
+    G3 --> H{Tipo da regra}
+    H -->|modulos| H1[Validar se todos módulos estão OK]
+    H -->|faixa min/max| H2[Validar limite numérico]
+    H -->|booleano| H3[Validar igualdade booleana]
+    H1 --> I[Salvar validações, auditoria e valores]
+    H2 --> I
+    H3 --> I
 
-### 4) Programação orientada a objetos (POO)
-O domínio foi dividido em classes para separar responsabilidades e tornar o fluxo mais legível e escalável.
-
----
-
-## 🏗️ Estrutura lógica (classes e responsabilidades)
-
-### `ModulosCriticos`
-Representa um módulo crítico do foguete (ex.: comunicação, navegação, propulsão), contendo:
-- nome do módulo;
-- status de saúde (`True`/`False`) após teste.
-
-### `Telemetria`
-Centraliza o fluxo operacional:
-- captura dados de sensores;
-- testa todos os módulos críticos;
-- executa validações comparando medições com `valores_seguros`;
-- produz resultado final de validação e auditoria.
-
----
-
-## ⚙️ Motivo das funções principais
-
-- **`captura_*`**: simulam leituras unitárias de telemetria.
-- **`testar_todos_modulos()`**: verifica rapidamente a saúde dos sistemas essenciais.
-- **`captura_todas_infos()`**: orquestra a coleta completa de dados em uma única chamada.
-- **`validacoes_telemetria()`**: aplica as regras de segurança e monta o relatório (validação + auditoria).
-- **`valida_decolagem()`**: comunica decisão final de forma direta para operação.
-
----
-
-## 🗂️ Estrutura do repositório
-
-```text
-.
-├── main.ipynb   # Notebook com toda a implementação da simulação
-└── README.md    # Documentação do projeto
+    I --> J[Capturar infos de energia\nVoltagem, corrente,\ncapacidade, carga,\nenergia disponível e perda]
+    J --> K[Executar valida_decolagem]
+    K --> L{Todas validações são True?}
+    L -->|Sim| M[PRONTO PARA DECOLAR]
+    L -->|Não| N[DECOLAGEM ABORTADA]
+    M --> O[Retornar dict final com decisão e motivos]
+    N --> O
+    O --> P[Fim]
 ```
 
+### Ordem de leitura
+1. **Coleta**: módulos e sensores geram dados simulados.
+2. **Validação**: cada dado é comparado com `valores_seguros`.
+3. **Auditoria**: o sistema registra regra, valor atual e motivo.
+4. **Decisão**: se tudo estiver conforme, decola; caso contrário, aborta.
+
 ---
 
-## ▶️ Como executar
+## 🖼️ Prints da execução
+Nesta seção você pode adicionar os prints reais da execução após rodar o código.
 
+---
+
+## ▶️ Instruções de execução do código
 ### Pré-requisitos
 - Python **3.10+**
-- Ambiente com suporte a Jupyter Notebook (VS Code + extensão Jupyter, Jupyter Lab ou Colab)
 
-### Opção 1 — Notebook (recomendado)
-1. Abra `main.ipynb`.
-2. Execute as células em ordem.
-3. Observe o resultado final na célula com `valida_decolagem(valida, auditoria)`.
+### Opção 1: Executar via Jupyter Notebook
+1. Abra o arquivo `main.ipynb` no VS Code (com extensão Jupyter) ou Jupyter Lab.
+2. Execute as células em ordem, do topo até a célula `valida_decolagem(valida, auditoria)`.
+3. Verifique a saída no final do notebook.
 
-### Opção 2 — Script Python
-Se desejar, converta/copie a lógica para um arquivo `.py` e execute:
+### Opção 2: Executar via script Python
+Caso prefira terminal, você pode copiar a lógica do notebook para um arquivo `.py` e executar:
 
 ```bash
 python nome_do_arquivo.py
@@ -116,3 +100,4 @@ Exemplo de organização sugerida:
 
 ## 👨‍💻 Autor
 Projeto acadêmico FIAP — Capítulo 1.
+> Observação: o projeto usa geração aleatória de valores, então os resultados podem mudar a cada execução.
