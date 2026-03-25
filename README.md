@@ -77,4 +77,27 @@ Caso prefira terminal, você pode copiar a lógica do notebook para um arquivo `
 python nome_do_arquivo.py
 ```
 
+> ℹ️ Como os dados são aleatórios, os resultados mudam entre execuções.
+
+---
+
+## 🖼️ Prints da execução
+Adicione aqui os prints reais da execução após rodar o notebook.
+
+Exemplo de organização sugerida:
+- `assets/execucao-ok.png`
+- `assets/execucao-falha.png`
+
+---
+
+## 🔮 Melhorias futuras
+- exportar relatório de auditoria para JSON/CSV;
+- adicionar testes automatizados para validações;
+- criar versão em script CLI com parâmetros de simulação;
+- incluir métricas históricas de falhas por módulo.
+
+---
+
+## 👨‍💻 Autor
+Projeto acadêmico FIAP — Capítulo 1.
 > Observação: o projeto usa geração aleatória de valores, então os resultados podem mudar a cada execução.
