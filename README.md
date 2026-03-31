@@ -56,19 +56,15 @@ flowchart TD
 
 ---
 
-## 🖼️ Prints da execução
-Nesta seção você pode adicionar os prints reais da execução após rodar o código.
-
----
-
 ## ▶️ Instruções de execução do código
 ### Pré-requisitos
 - Python **3.10+**
 
 ### Opção 1: Executar via Jupyter Notebook
 1. Abra o arquivo `main.ipynb` no VS Code (com extensão Jupyter) ou Jupyter Lab.
-2. Execute as células em ordem, do topo até a célula `valida_decolagem(valida, auditoria)`.
-3. Verifique a saída no final do notebook.
+2. Execute todas as células.
+3. Verifique as saídas ao longo do notebook.
+
 
 ### Opção 2: Executar via script Python
 Caso prefira terminal, você pode copiar a lógica do notebook para um arquivo `.py` e executar:
@@ -82,12 +78,7 @@ python nome_do_arquivo.py
 ---
 
 ## 🖼️ Prints da execução
-Adicione aqui os prints reais da execução após rodar o notebook.
-
-Exemplo de organização sugerida:
-- `assets/execucao-ok.png`
-- `assets/execucao-falha.png`
-
+Os prints da execução bem sucedida do código, está presente no arquivo PDF. Também é possível executar o código no Notebook Python e executar todas as células no notebook.
 ---
 
 ## 🔮 Melhorias futuras
