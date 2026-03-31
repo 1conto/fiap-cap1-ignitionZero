@@ -98,6 +98,10 @@ Exemplo de organização sugerida:
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Autores
 Projeto acadêmico FIAP — Capítulo 1.
+### Luis Gustavo Ribeiro Andrade
+    Formado em Economia pela FGV EPGE, trabalhou com modelos de Machine Learning ao longo da sua graduação. Os modelos de Machine Learning apresentados no trabalho foram desenvolvidos com seu conhecimento prévio em Econometria e Estatística concedido pela sua graduação anterior.
+
+
 > Observação: o projeto usa geração aleatória de valores, então os resultados podem mudar a cada execução.
