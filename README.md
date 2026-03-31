@@ -77,7 +77,7 @@ python nome_do_arquivo.py
 
 ---
 
-## 🖼️ Prints da execução
+## 🖼️ Prints da execução  
 Os prints da execução bem sucedida do código, está presente no arquivo PDF. Também é possível executar o código no Notebook Python e executar todas as células no notebook.
 ---
 
